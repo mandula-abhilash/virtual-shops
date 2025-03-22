@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useParams } from "next/navigation";
-import BookingModal from "@/components/BookingModal";
-import LiveStream from "@/components/LiveStream";
+import BookingModal from "@/components/bookings/BookingModal";
+import LiveStream from "@/components/live-stream/LiveStream";
 
 export default function ShopPage() {
   const { id } = useParams();
