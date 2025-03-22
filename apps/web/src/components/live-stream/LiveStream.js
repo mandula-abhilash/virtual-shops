@@ -3,11 +3,10 @@
 import { useEffect, useRef } from "react";
 import Hls from "hls.js";
 
-// Sample HLS streams for testing
 const TEST_STREAMS = {
-  1: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8", // Big Buck Bunny
-  2: "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8", // Tears of Steel
-  3: "https://cdn.jwplayer.com/manifests/pZxWPRg4.m3u8", // Elephants Dream
+  1: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+  2: "https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8",
+  3: "https://cdn.jwplayer.com/manifests/pZxWPRg4.m3u8",
 };
 
 export default function LiveStream({ shopId }) {
@@ -50,7 +49,6 @@ export default function LiveStream({ shopId }) {
         }
       });
     } else if (videoRef.current.canPlayType("application/vnd.apple.mpegurl")) {
-      // For Safari
       videoRef.current.src = streamUrl;
       videoRef.current.addEventListener("loadedmetadata", () => {
         videoRef.current.play().catch((error) => {
@@ -67,7 +65,7 @@ export default function LiveStream({ shopId }) {
   }, [shopId]);
 
   return (
-    <div className="relative w-full aspect-video bg-black rounded-lg overflow-hidden">
+    <div className="relative w-full aspect-video bg-black overflow-hidden">
       <video
         ref={videoRef}
         className="w-full h-full"
@@ -75,7 +73,7 @@ export default function LiveStream({ shopId }) {
         playsInline
         poster="/stream-placeholder.jpg"
       />
-      <div className="absolute top-4 left-4 bg-black/50 text-white px-2 py-1 rounded text-sm">
+      <div className="absolute top-6 left-6 bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium">
         Live
       </div>
     </div>
